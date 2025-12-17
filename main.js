@@ -72,14 +72,23 @@ for (let i = 1; i <= 100; i++) {
 
 // * VERSIONE BONUS TIZIANO
 
-// ? fai scegliere all'utente un numero 
+// ? fai scegliere all'utente un numero
 // ? custom di cui sostituire tutti i multipli con la parola "Boom"
 
 //Variabile per mostrare l'output
 let output;
 
-//Chiedo all'utente numero custom
-const 
+//Chiedo all'utente numero custom (numero Boom)
+const boomNumber = parseInt(
+  prompt(`Inserisci il numero Boom.
+  (Intero, compreso tra 1 e 100)`)
+);
+
+//Validazione numero Boom inserito
+if (!boomNumber || boomNumber < 1 || boomNumber > 100) {
+  alert(`numero Boom non valido: ${boomNumber}`);
+  throw new Error(`numero Boom non valido: ${boomNumber}`);
+}
 
 //Ciclo che scorre i numeri da 1 a 100
 for (let i = 1; i <= 100; i++) {
@@ -96,7 +105,12 @@ for (let i = 1; i <= 100; i++) {
     output += "Buzz";
   }
 
-  //Se la variabile di output è ancora stringa vuota, 
+  //Intercetto multipli di numero Boom
+  if (i % boomNumber === 0) {
+    output += "Boom";
+  }
+
+  //Se la variabile di output è ancora stringa vuota,
   //le assegno il valore corrente del contatore
   if (!output) {
     output = i;
@@ -107,5 +121,3 @@ for (let i = 1; i <= 100; i++) {
 }
 
 //***************************************************** */
-
-
